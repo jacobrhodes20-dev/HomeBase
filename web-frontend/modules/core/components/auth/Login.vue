@@ -17,14 +17,13 @@
         <div class="auth__logo">
           <NuxtLink :to="{ name: 'index' }">
             <span class="auth__brand">
-              <img
-                class="auth__brand-mark"
-                src="@baserow/modules/core/static/img/logoOnly.svg?url"
-                alt="HomeBase logo"
-              />
-              <span class="auth__brand-name">HomeBase</span>
+              <span class="auth__brand-mark" aria-hidden="true">R</span>
+              <span class="auth__brand-name">RunbookPM</span>
             </span>
           </NuxtLink>
+          <div class="auth__tagline">
+            Project management playbooks that make every handoff clear.
+          </div>
         </div>
         <h1 class="auth__head-title">{{ $t('login.title') }}</h1>
         <div class="auth__head">

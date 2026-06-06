@@ -543,7 +543,7 @@
     "emailPlaceholder": "Enter your email address..",
     "passwordPlaceholder": "Enter your password..",
     "forgotPassword": "Forgot?",
-    "signUpText": "New to HomeBase?",
+    "signUpText": "New to RunbookPM?",
     "signUp": "Sign up",
     "displayPasswordLogin": "Log in using email and password",
     "redirecting": "Redirecting to authentication provider..."

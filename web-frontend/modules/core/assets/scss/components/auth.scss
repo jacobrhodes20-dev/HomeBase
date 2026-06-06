@@ -16,28 +16,41 @@
 
 .auth__logo {
   @extend %mb-24;
-
-  & img {
-    display: block;
-  }
 }
 
 .auth__brand {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   color: $color-neutral-900;
 }
 
 .auth__brand-mark {
-  width: 18px;
-  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  color: $white;
+  background-color: $color-primary-500;
+  font-size: 13px;
+  line-height: 22px;
+  font-weight: 700;
 }
 
 .auth__brand-name {
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 19px;
+  line-height: 22px;
   font-weight: 700;
+}
+
+.auth__tagline {
+  max-width: 320px;
+  margin-top: 8px;
+  color: $color-neutral-600;
+  font-size: 13px;
+  line-height: 18px;
 }
 
 .auth__head {

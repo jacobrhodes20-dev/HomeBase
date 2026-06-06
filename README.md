@@ -1,117 +1,115 @@
-## Baserow: build databases, automations, apps & agents with AI — no code
+# RunbookPM
 
-Baserow is the secure, open-source platform for building databases, applications,
-automations, and AI agents — all without code. Trusted by over 150,000 users, Baserow
-delivers enterprise-grade security with GDPR, HIPAA, and SOC 2 Type II compliance, plus
-cloud and self-hosted deployments for full data control. With a built-in AI Assistant
-that lets you create databases and workflows using natural language, Baserow empowers
-teams to structure data, automate processes, build internal tools, and create custom
-dashboards. Fully extensible and API-first, Baserow integrates seamlessly with your
-existing tools and performs at any scale.
+**Project management playbooks that make every handoff clear.**
 
-* A spreadsheet database hybrid combining ease of use and powerful data organization.
-* Create applications and portals, and publish them on your own domain.
-* Automate repetitive workflows with automations.
-* Visualize your data with dashboards.
-* Kuma, powerful AI-assistant to builds complete solutions.
-* GDPR, HIPAA, and SOC 2 Type II compliant.
-* Easily self-hosted with no storage restrictions or sign-up on https://baserow.io to
-  get started immediately.
-* Best Alternative to Airtable.
-* Open-core with all non-premium and non-enterprise features under
-  the [MIT License](https://choosealicense.com/licenses/mit/) allowing commercial and
-  private use.
-* Headless and API first.
-* Uses popular frameworks and tools like [Django](https://www.djangoproject.com/),
-  [Vue.js](https://vuejs.org/) and [PostgreSQL](https://www.postgresql.org/).
+RunbookPM is a project/workflow execution system being built on top of the
+MIT-licensed Baserow open-source codebase. The goal is not to create a
+white-labeled Baserow clone. The goal is to use Baserow as the database
+foundation while building a distinct project management layer for repeatable
+work blocks, assignment-chain routing, handoff accountability, and project
+readiness visibility.
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy/?template=https://github.com/baserow/baserow/tree/master)
+## Product Direction
 
-```bash
-docker run -v baserow_data:/baserow/data -p 80:80 -p 443:443 baserow/baserow:2.2.2
+RunbookPM should help project managers become effective faster by giving them
+structured project playbooks instead of blank task lists.
+
+The core workflow is:
+
+```text
+PM creates a project
+PM adds one or more work blocks
+Each work block uses an assignment-chain template
+RunbookPM generates tasks and handoffs
+Users accept, complete, reject, or send work back
+The PM sees ownership, blockers, readiness, and status rollups
 ```
 
-![Baserow database screenshot](docs/assets/screenshot.png "Baserow database screenshot")
+## MVP Focus
 
-![Baserow form screenshot](docs/assets/screenshot_kuma_form.png "Baserow form view and Kuma screenshot")
+- Project creation
+- Work block template library
+- Add work blocks to projects
+- Assignment-chain template selection
+- Automatic task and handoff generation
+- My Tasks view
+- Department Queue view
+- Task detail panel
+- Handoff states: Sent, Accepted, Rejected, Needs Clarification, Complete
+- Activity log
+- PM dashboard with blocker and readiness rollups
+- RunbookPM branding
 
-![Baserow kanban screenshot](docs/assets/screenshot_kanban.png "Baserow kanban view screenshot")
+## Foundation
 
-![Baserow application builder](docs/assets/screenshot_application_builder.png "Baserow application builder screenshot")
+This repository currently starts from Baserow `2.2.2` source code imported from:
 
-![Baserow application builder](docs/assets/screenshot_automations.png "Baserow automations screenshot")
+- Upstream repository: https://github.com/baserow/baserow
+- Upstream branch: `develop`
+- Upstream commit: `a1528edb0340bc509c900215bc3cb58b8fdcf05a`
 
-![Baserow application builder](docs/assets/screenshot_dashboard.png "Baserow dashboard screenshot")
+Baserow provides the initial database, records, views, API, permissions, admin,
+and application-builder foundation. RunbookPM-specific code should stay clearly
+separated where practical so the custom project/workflow layer remains distinct
+from the upstream foundation.
 
-## 🚨 Repository Migration Notice
+## Local Development
 
-Baserow has moved from GitLab to GitHub. All issues have been successfully migrated,
-but merged and closed merge requests (PRs) were not imported. You can still browse the
-old repository and its history at: https://gitlab.com/baserow/baserow.
+The source development stack runs through Docker Compose.
 
-Please use this GitHub repository  for all new issues, discussions, and contributions
-going forward at: https://github.com/baserow/baserow.
-
-## Get Involved
-
-Join our forum at https://community.baserow.io/. See
-[CONTRIBUTING.md](./CONTRIBUTING.md) on how to become a contributor.
-
-## Installation
-
-* [**Docker**](docs/installation/install-with-docker.md)
-* [**Helm**](docs/installation/install-with-helm.md)
-* [**Docker Compose** ](docs/installation/install-with-docker-compose.md)
-* [**Heroku**: Easily install and scale up Baserow on Heroku.](docs/installation/install-on-heroku.md)
-* [**Render**: Easily install and scale up Baserow on Render.](docs/installation/install-on-render.md)
-* [**Digital Ocean**: Easily install and scale up Baserow on Digital Ocean.](docs/installation/install-on-digital-ocean.md)
-* [**AWS**: Install in a scalable way on AWS](docs/installation/install-on-aws.md)
-* [**Cloudron**: Install and update Baserow on your own Cloudron server.](docs/installation/install-on-cloudron.md)
-* [**Railway**: Install Baserow via Railway.](docs/installation/install-on-railway.md)
-* [**Elestio**: Fully managed by Elestio.](https://elest.io/open-source/baserow)
-
-## Official documentation
-
-The official documentation can be found on the website at https://baserow.io/docs/index
-or [here](./docs/index.md) inside the repository. The API docs can be found here at
-https://api.baserow.io/api/redoc/ or if you are looking for the OpenAPI schema here
-https://api.baserow.io/api/schema.json.
-
-## Development environment
-
-If you want to contribute to Baserow you can setup a development environment like so:
-
-```bash
-git clone https://github.com/baserow/baserow.git
-cd baserow
-
-just dc-dev build --parallel
-just dc-dev up -d
+```powershell
+$env:PWD = (Get-Location).Path
+$env:UID = '1000'
+$env:GID = '1000'
+docker compose --env-file .env.docker-dev -f docker-compose.yml -f docker-compose.dev.yml up -d
 ```
 
-The Baserow development environment is now running.
-Visit [http://localhost:3000](http://localhost:3000) in your browser to see a working
-version in development mode with hot code reloading and other dev features enabled.
+The local app is available at:
 
-More detailed instructions and more information about the development environment can be
-found at [https://baserow.io/docs/development/development-environment](./docs/development/development-environment.md).
+```text
+http://localhost:3000/login
+```
 
-## Why Baserow?
+The backend health endpoint is:
 
-Unlike proprietary tools like Airtable, Baserow gives you **full data ownership**,
-**infinite scalability**, and **no vendor lock-in** — all while keeping the simplicity
-of a spreadsheet interface.
+```text
+http://localhost:8000/api/_health/
+```
 
-## Meta
+## Naming And GitHub
 
-Created by Baserow B.V. - bram@baserow.io.
+The product name is now **RunbookPM**.
 
-Distributes under the MIT license. See `LICENSE` for more information.
+The local checkout may still live in a folder named `Home Base`, and the GitHub
+remote may still point at `jacobrhodes20-dev/HomeBase` until the GitHub
+repository itself is renamed or recreated as `RunbookPM`.
 
-Version: 2.2.2
+Recommended GitHub target:
 
-The official repository can be found at https://github.com/baserow/baserow.
+```text
+jacobrhodes20-dev/RunbookPM
+```
 
-The changelog can be found [here](./changelog.md).
+After the GitHub repository exists at that name, update the local remote with:
 
-Become a GitHub Sponsor [here](https://github.com/sponsors/bram2w).
+```powershell
+git remote set-url origin https://github.com/jacobrhodes20-dev/RunbookPM.git
+git remote -v
+```
+
+## Licensing Notes
+
+Keep the Baserow MIT license and copyright notices intact. Do not claim
+ownership of Baserow's original code. Do not use Baserow branding, logos, or
+trademarks as the RunbookPM product brand.
+
+Before commercialization, review:
+
+- Baserow MIT license obligations
+- Any remaining proprietary Baserow Premium, Advanced, or Enterprise code
+- Baserow trademark/logo removal
+- Third-party dependency licenses
+- Separation between Baserow foundation code and RunbookPM custom code
+
+See `LICENSE` for the original Baserow license information included with this
+source import.

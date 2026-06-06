@@ -1,7 +1,13 @@
-# HomeBase Bootstrap
+# RunbookPM Bootstrap
 
-HomeBase currently starts as an unmodified Baserow source import so we can run the
-baseline product before changing behavior.
+RunbookPM started from the Baserow source import so we can keep the working
+database foundation while building a distinct project management product on top.
+
+Product tagline:
+
+```text
+Project management playbooks that make every handoff clear.
+```
 
 ## Imported Source
 
@@ -16,8 +22,8 @@ baseline product before changing behavior.
 - Docker is installed.
 - Docker Compose is installed.
 - `just` is not installed yet.
-- No HomeBase product customizations have been made yet.
-- The HomeBase source dev stack has been verified on this Windows machine.
+- RunbookPM login branding has been added.
+- The RunbookPM source dev stack has been verified on this Windows machine.
 
 ## Baseline Run Options
 
@@ -55,13 +61,13 @@ so the source stack can run cleanly on Windows.
 
 Target GitHub account: `jacobrhodes20-dev`
 
-Target repository name: `HomeBase`
+Target repository name: `RunbookPM`
 
 The GitHub connector available in this session can work with existing repositories,
-but it does not expose repository creation. Once `jacobrhodes20-dev/HomeBase` exists
-on GitHub, this local repository can be pushed to:
+but it does not expose repository rename/creation. Once `jacobrhodes20-dev/RunbookPM`
+exists on GitHub, this local repository can point to:
 
 ```powershell
-git remote add origin https://github.com/jacobrhodes20-dev/HomeBase.git
+git remote set-url origin https://github.com/jacobrhodes20-dev/RunbookPM.git
 git push -u origin main
 ```

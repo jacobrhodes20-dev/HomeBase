@@ -1,6 +1,6 @@
 export default {
-  title: 'HomeBase',
-  titleTemplate: '%s | HomeBase',
+  title: 'RunbookPM',
+  titleTemplate: '%s | RunbookPM',
   meta: [
     { charset: 'utf-8' },
     {
