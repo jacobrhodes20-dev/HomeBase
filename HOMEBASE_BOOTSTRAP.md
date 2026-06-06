@@ -17,6 +17,7 @@ baseline product before changing behavior.
 - Docker Compose is installed.
 - `just` is not installed yet.
 - No HomeBase product customizations have been made yet.
+- The HomeBase source dev stack has been verified on this Windows machine.
 
 ## Baseline Run Options
 
@@ -33,7 +34,22 @@ just dc-dev build --parallel
 just dc-dev up -d
 ```
 
-The dev environment is expected at http://localhost:3000 after it starts.
+Because `just` is not installed here yet, the equivalent direct Docker Compose command
+is:
+
+```powershell
+$env:PWD = (Get-Location).Path
+$env:UID = '1000'
+$env:GID = '1000'
+docker compose --env-file .env.docker-dev -f docker-compose.yml -f docker-compose.dev.yml up -d
+```
+
+The dev environment is expected at http://localhost:3000 after it starts. In the
+current dev routing, use http://localhost:3000/login as the main app entry point.
+
+This Windows checkout converted a few upstream symlink placeholders into plain text
+files. The dev Compose file now mounts the real locales and `node_modules` locations
+so the source stack can run cleanly on Windows.
 
 ## GitHub Remote
 
