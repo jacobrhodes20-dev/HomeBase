@@ -16,7 +16,14 @@
       <div v-if="displayHeader">
         <div class="auth__logo">
           <NuxtLink :to="{ name: 'index' }">
-            <Logo />
+            <span class="auth__brand">
+              <img
+                class="auth__brand-mark"
+                src="@baserow/modules/core/static/img/logoOnly.svg?url"
+                alt="HomeBase logo"
+              />
+              <span class="auth__brand-name">HomeBase</span>
+            </span>
           </NuxtLink>
         </div>
         <h1 class="auth__head-title">{{ $t('login.title') }}</h1>

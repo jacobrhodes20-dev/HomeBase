@@ -543,7 +543,7 @@
     "emailPlaceholder": "Enter your email address..",
     "passwordPlaceholder": "Enter your password..",
     "forgotPassword": "Forgot?",
-    "signUpText": "New to Baserow?",
+    "signUpText": "New to HomeBase?",
     "signUp": "Sign up",
     "displayPasswordLogin": "Log in using email and password",
     "redirecting": "Redirecting to authentication provider..."
