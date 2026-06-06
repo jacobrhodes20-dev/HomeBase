@@ -76,6 +76,23 @@ The backend health endpoint is:
 http://localhost:8000/api/_health/
 ```
 
+## Desktop Launcher
+
+The local launcher helper lives at:
+
+```text
+tools/runbookpm/Start-RunbookPM.ps1
+```
+
+It starts the Docker Compose development stack and opens:
+
+```text
+http://localhost:3000/login
+```
+
+On this Windows machine, a desktop shortcut named `RunbookPM.lnk` points to that
+script.
+
 ## Naming And GitHub
 
 The product name is now **RunbookPM**.
